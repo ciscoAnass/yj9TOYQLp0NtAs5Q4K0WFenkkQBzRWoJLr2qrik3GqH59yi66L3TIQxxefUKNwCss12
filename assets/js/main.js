@@ -188,3 +188,21 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+/*==================== SCROLL ANIMATION - Contact Me====================*/
+document.addEventListener('DOMContentLoaded', function() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2,
+        rootMargin: '-50px'
+    });
+
+    document.querySelectorAll('.contact__container').forEach((section) => {
+        observer.observe(section);
+    });
+});
